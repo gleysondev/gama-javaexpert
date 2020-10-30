@@ -17,6 +17,10 @@ public class Marca {
 	@Column(length = 50, nullable = false)
 	private String nome;
 	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
