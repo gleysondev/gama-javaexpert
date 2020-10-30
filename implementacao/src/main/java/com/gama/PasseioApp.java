@@ -2,15 +2,37 @@ package com.gama;
 
 import java.util.List;
 
+import com.gama.model.Campos;
 import com.gama.model.Carro;
 import com.gama.repository.CarroJpaRepository;
 
 public class PasseioApp {
 
 	public static void main(String[] args) {
-		jpa();
-		consultaJpa();
+		//jpa();
+		//consultaJpa()
+		consultaJpaComParametros();
+		
+		System.exit(0);
 	}
+	
+	public static void consultaJpaComParametros() {
+		System.out.println("CONSULTA COM JPA");
+		CarroJpaRepository repository = new CarroJpaRepository();
+		List<Carro> carros = repository.listarPorMarca("Ford");
+		
+		
+		for(Carro c: carros) {
+			System.out.println(c);
+		}
+		
+		carros = repository.listar(Campos.CARRO_CAPACIDADE_TANQUE,200);
+		System.out.println("Listagem por modelo");
+		
+		for(Carro c: carros) {
+			System.out.println(c);
+		}
+	} 
 	
 	public static void consultaJpa() {
 		System.out.println("CONSULTA COM JPA");

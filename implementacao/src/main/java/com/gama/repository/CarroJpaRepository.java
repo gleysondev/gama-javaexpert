@@ -12,6 +12,21 @@ import com.gama.model.Carro;
 public class CarroJpaRepository {
 	private EntityManager entityManager ;
 	
+	public List<Carro> listarPorMarca(String marca){
+		return listar("marca", marca);
+	}
+	
+	public List<Carro> listarPorModelo(String modelo){
+		return listar("modelo", modelo);
+	}
+	
+	public List<Carro> listar(String campo, Object valor){
+		Query query = entityManager.createQuery("SELECT e FROM Carro e WHERE e." + campo + " = :param1 ");
+		query.setParameter("param1",valor );
+		return query.getResultList();
+	}
+	
+	
 	public CarroJpaRepository() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
 		entityManager = factory.createEntityManager();
@@ -28,7 +43,7 @@ public class CarroJpaRepository {
 	}
 	
 	public List<Carro> listar() {
-		Query query = entityManager.createQuery("SELECT e FROM Carro e ");
+		Query query = entityManager.createQuery("SELECT e FROM Carro e "); //JQPL
 		return query.getResultList();
 	}
 
