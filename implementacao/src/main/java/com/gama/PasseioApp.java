@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.gama.model.Campos;
 import com.gama.model.Carro;
+import com.gama.model.Marca;
 import com.gama.repository.CarroJpaRepository;
 
 public class PasseioApp {
@@ -11,8 +12,8 @@ public class PasseioApp {
 	public static void main(String[] args) {
 		//jpa();
 		//consultaJpa()
-		consultaJpaComParametros();
-		
+		//consultaJpaComParametros();
+		salvarCarroComMarca();
 		System.exit(0);
 	}
 	
@@ -49,6 +50,22 @@ public class PasseioApp {
 		}
 		
 	}
+	public static void salvarCarroComMarca() {
+		System.out.println("PERSISTENCIA COM JPA");
+		CarroJpaRepository repository = new CarroJpaRepository();
+		
+		//Marca marca = new Marca();
+		//marca.setNome("FORD");
+		
+		Carro carro = new Carro();
+		//carro.setMarca(marca);
+		carro.setModelo("Fiesta");
+		carro.setCor("Azul");
+		carro.setCapacidadeTanque(200);
+		
+		repository.incluir(carro);
+	}
+	/*
 	public static void jpa() {
 		System.out.println("PERSISTENCIA COM JPA");
 		CarroJpaRepository repository = new CarroJpaRepository();
@@ -77,4 +94,5 @@ public class PasseioApp {
 			repository.alterar(carro);
 		}
 	}
+	*/
 }
