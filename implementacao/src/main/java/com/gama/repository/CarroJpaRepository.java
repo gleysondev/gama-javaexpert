@@ -29,7 +29,6 @@ public class CarroJpaRepository {
 	
 	public List<Carro> listar() {
 		Query query = entityManager.createQuery("SELECT e FROM Carro e ");
-		
 		return query.getResultList();
 	}
 
