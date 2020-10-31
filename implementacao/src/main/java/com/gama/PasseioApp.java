@@ -81,7 +81,7 @@ public class PasseioApp {
 			
 			System.out.println("Inclusao do Carro");
 		}else {
-			System.out.println("O tipo do meu carro é " + carro.getTipo());
+			System.out.println("O tipo do meu carro é " + carro.getTipo() + " Com a lotacao " + carro.getTipo().getLotacao());
 			carro.setCor("Azul Marinho");
 			carro.setTipo(CarroTipo.QUADRICICLO);
 			repository.alterar(carro);
