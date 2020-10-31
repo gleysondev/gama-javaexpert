@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import com.gama.model.Carro;
 
-public class CarroJpaRepository extends Repository {
+public class CarroJpaRepository  extends Repository <Carro> {
 	
 	public List<Carro> listarPorMarca(String marca){
 		return listar("marca", marca);
@@ -41,15 +41,5 @@ public class CarroJpaRepository extends Repository {
 		return (Carro) query.getSingleResult();
 	}
 	
-	
-	
-	public Carro buscar(Integer id) {
-		return entityManager.find(Carro.class,id);
-	}
-	
-	public List<Carro> listar() {
-		Query query = entityManager.createQuery("SELECT e FROM Carro e "); //JQPL
-		return query.getResultList();
-	}
 	
 }
