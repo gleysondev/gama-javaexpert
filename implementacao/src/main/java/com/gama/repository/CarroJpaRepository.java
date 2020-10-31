@@ -2,17 +2,13 @@ package com.gama.repository;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.gama.model.Carro;
 
-public class CarroJpaRepository {
-	private EntityManager entityManager ;
+public class CarroJpaRepository extends Repository {
 	
 	public List<Carro> listarPorMarca(String marca){
 		return listar("marca", marca);
@@ -45,10 +41,6 @@ public class CarroJpaRepository {
 		return (Carro) query.getSingleResult();
 	}
 	
-	public CarroJpaRepository() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
-		entityManager = factory.createEntityManager();
-	}
 	
 	public void incluir(Carro carro) {
 		entityManager.getTransaction().begin();

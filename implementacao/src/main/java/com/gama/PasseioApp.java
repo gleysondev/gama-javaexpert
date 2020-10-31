@@ -8,10 +8,12 @@ import com.gama.model.CarroTipo;
 import com.gama.model.Marca;
 import com.gama.repository.CarroJpaRepository;
 import com.gama.repository.MarcaJpaRepository;
+import com.gama.repository.Repository;
 
 public class PasseioApp {
 
 	public static void main(String[] args) {
+		Repository.criarConexao();
 		//jpa();
 		//consultaJpa()
 		//consultaJpaComParametros();

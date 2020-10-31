@@ -2,20 +2,12 @@ package com.gama.repository;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.gama.model.Marca;
 
-public class MarcaJpaRepository {
-	private EntityManager entityManager ;
+public class MarcaJpaRepository extends Repository {
 	
-	public MarcaJpaRepository() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
-		entityManager = factory.createEntityManager();
-	}
 	
 	public void incluir(Marca marca) {
 		entityManager.getTransaction().begin();
