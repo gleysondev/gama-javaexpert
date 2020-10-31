@@ -40,7 +40,10 @@ public class PasseioStart {
 		String nome= "HYUNDAY";
 		
 		//boolean existe = marcaRepository.existeMarcaPorNome(nome);
-		List<Marca> marcas = marcaRepository.findByNomeContaining(nome);
+		//List<Marca> marcas = marcaRepository.findByNomeContaining(nome);
+		String comecaCom = nome+"%";
+		List<Marca> marcas = marcaRepository.findByNomeLike(comecaCom);
+		marcas = marcaRepository.findByNomeContainingIgnoreCase("hyunday");
 		
 		Marca marca =marcaRepository.findByNome(nome);
 		if(marca==null) {
@@ -49,9 +52,6 @@ public class PasseioStart {
 			
 			marcaRepository.save(marca);
 		}
-		
-		
-		
 	}
 	private void gerenciarCarros() {
 		

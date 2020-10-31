@@ -15,6 +15,9 @@ public interface MarcaRepository extends CrudRepository<Marca, Integer> {
 	Marca findByNome(String nome);
 	
 	List<Marca> findByNomeContaining(String nome);
+	List<Marca> findByNomeLike(String nome);
+	
+	List<Marca> findByNomeContainingIgnoreCase(String nome);
 	
 	//@Query("SELECT true FROM Marca e WHERE e.nome = :nome")
 	//boolean existeMarcaPorNome(String nome);
