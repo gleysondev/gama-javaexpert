@@ -25,6 +25,23 @@ public class Carro {
 	//@Column(length = 15)
 	private CarroTipo tipo; //4X4 ou QUADRICICLO
 	
+	private boolean disponivel;
+	
+	private Double preco;
+	
+	
+	public boolean isDisponivel() {
+		return disponivel;
+	}
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
+	}
+	public Double getPreco() {
+		return preco;
+	}
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 	public Carro() {
 		this.tipo = CarroTipo.C4X4;
 	}
