@@ -55,30 +55,37 @@ public class PasseioApp {
 		
 		MarcaJpaRepository marcaRepository = new MarcaJpaRepository();
 		
-		
-		
 		Marca marca = marcaRepository.buscar(1);
 		if(marca==null) {
 			marca= new Marca();
 			marca.setNome("FORD");
 		}
 		
-		
 		//marcaRepository.incluir(marca);
 		
 		System.out.println("PERSISTENCIA COM JPA");
 		CarroJpaRepository repository = new CarroJpaRepository();
 		
+		String placa = "ABC-1234";
+		
+		Carro carro =  repository.buscar(placa);
+		if(carro==null) {
+			carro = new Carro();
+			carro.setMarca(marca);
+			carro.setModelo("Fiesta ABC");
+			carro.setCor("Azul");
+			carro.setPlaca(placa);
+			carro.setCapacidadeTanque(200);
+			repository.incluir(carro);
+			
+			System.out.println("Inclusao do Carro");
+		}else {
+			carro.setCor("Azul Marinho");
+			repository.alterar(carro);
+			System.out.println("Alteracao do Carro");
+		}
 		
 		
-		
-		Carro carro = new Carro();
-		carro.setMarca(marca);
-		carro.setModelo("Fiesta ABC");
-		carro.setCor("Azul");
-		carro.setCapacidadeTanque(200);
-		
-		repository.incluir(carro);
 	}
 	/*
 	public static void jpa() {

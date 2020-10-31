@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -26,6 +28,22 @@ public class CarroJpaRepository {
 		return query.getResultList();
 	}
 	
+	public Carro buscar(String placa){
+		Query query = entityManager.createQuery("SELECT e FROM Carro e WHERE e.placa = :placa");
+		query.setParameter("placa",placa );
+		
+		Carro carro = null;
+		try {
+			carro=(Carro) query.getSingleResult();
+		}catch (NoResultException e) {
+			return null;
+		}catch (NonUniqueResultException e) {
+			throw new RuntimeException("Desculpe, Mas já temos um veículo com esta placa em nossa base de dados : " + placa);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return (Carro) query.getSingleResult();
+	}
 	
 	public CarroJpaRepository() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");

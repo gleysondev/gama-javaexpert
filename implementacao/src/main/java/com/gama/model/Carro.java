@@ -20,7 +20,9 @@ public class Carro {
 	private Marca marca;
 	
 	private String modelo;
-
+	
+	private String placa;
+	
 	private String cor;
 	
 	@Column(name="capacidade_tanque")
@@ -67,6 +69,12 @@ public class Carro {
 	public String toString() {
 		return "Carro [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", capacidadeTanque="
 				+ capacidadeTanque + "]";
+	}
+	public String getPlaca() {
+		return placa;
+	}
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 
 	@Override
