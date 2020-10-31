@@ -11,8 +11,8 @@ public class PasseioWebApiApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext run = SpringApplication.run(PasseioWebApiApplication.class, args);
-		PasseioStart start = run.getBean(PasseioStart.class);
-		start.iniciar();		
+		//PasseioStart start = run.getBean(PasseioStart.class);
+		//start.iniciar();		
 	}
 
 }
