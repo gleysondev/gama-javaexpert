@@ -69,7 +69,7 @@ public class PasseioApp {
 		System.out.println("PERSISTENCIA COM JPA");
 		CarroJpaRepository repository = new CarroJpaRepository();
 		
-		String placa = "ABC-1234";
+		String placa = "ABC-45678";
 		
 		Carro carro =  repository.buscar(placa);
 		if(carro==null) {
@@ -83,9 +83,11 @@ public class PasseioApp {
 			
 			System.out.println("Inclusao do Carro");
 		}else {
+			if(carro.getTipo()==null)
+				carro.setTipo(CarroTipo.C4X4);
 			System.out.println("O tipo do meu carro é " + carro.getTipo() + " Com a lotacao " + carro.getTipo().getLotacao());
 			carro.setCor("Azul Marinho");
-			carro.setTipo(CarroTipo.QUADRICICLO);
+			carro.setTipo(CarroTipo.MOTOCICLETA);
 			repository.alterar(carro);
 			System.out.println("Alteracao do Carro");
 		}

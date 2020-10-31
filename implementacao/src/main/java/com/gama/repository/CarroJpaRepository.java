@@ -42,11 +42,6 @@ public class CarroJpaRepository extends Repository {
 	}
 	
 	
-	public void incluir(Carro carro) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(carro); 
-		entityManager.getTransaction().commit();
-	}
 	
 	public Carro buscar(Integer id) {
 		return entityManager.find(Carro.class,id);
@@ -56,12 +51,5 @@ public class CarroJpaRepository extends Repository {
 		Query query = entityManager.createQuery("SELECT e FROM Carro e "); //JQPL
 		return query.getResultList();
 	}
-
-	public void alterar(Carro carro) {
-		entityManager.getTransaction().begin();
-		entityManager.merge(carro);
-		entityManager.getTransaction().commit();
-	}
-	
 	
 }
