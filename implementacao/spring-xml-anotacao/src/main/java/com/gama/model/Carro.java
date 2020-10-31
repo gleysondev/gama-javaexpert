@@ -5,6 +5,9 @@ public class Carro {
 	private String modelo;
 	private String cor;
 	private int combustivel;
+	public Carro() {
+		System.out.println("Novo Carro");
+	}
 	public String getMarca() {
 		return marca;
 	}
@@ -28,6 +31,10 @@ public class Carro {
 	}
 	public void setCombustivel(int combustivel) {
 		this.combustivel = combustivel;
+	}
+	@Override
+	public String toString() {
+		return "Carro [marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", combustivel=" + combustivel + "]";
 	}
 	
 }

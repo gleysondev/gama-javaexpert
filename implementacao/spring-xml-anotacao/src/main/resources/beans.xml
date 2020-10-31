@@ -6,7 +6,10 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context.xsd">
      
-    <bean id="fiesta"    class="com.gama.model.Carro"></bean>
+    <bean id="fiesta" scope="prototype"   class="com.gama.model.Carro">
+    	<property name="marca" value="FORD"/>
+    	<property name="modelo" value="FIESTA"/>
+    </bean>
     <bean id="l200"    class="com.gama.model.Carro"></bean>
      
 </beans> 

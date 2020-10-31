@@ -10,22 +10,33 @@ import com.gama.model.Carro;
 public class PasseioApp {
 	public static void main(String[] args) {
 		springComAnotacao();
-		springComXml();
+		//springComXml();
 	}
 	
 	private static void springComAnotacao() {
-		System.out.println("Iniciando o Spring com Anotação");
+		System.out.println("Iniciando o Spring com Anotaï¿½ï¿½o");
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-	       
 		//Carro carro = ctx.getBean(Carro.class); //erro
 		
-		Carro fiesta = ctx.getBean("fiesta",Carro.class);
+				Carro fiesta = ctx.getBean("fiesta",Carro.class);
+				System.out.println(fiesta);
+				fiesta.setCombustivel(120);
+				fiesta.setCor("AZUL");
+				//fiesta.setMarca("FORD");
+				//fiesta.setModelo("FISTA");
+				
+				System.out.println(fiesta);
+				
+				fiesta = ctx.getBean("fiesta",Carro.class);
+				
+				System.out.println(fiesta);
+				//Carro l200 = ctx.getBean("l200",Carro.class);
+				
+				System.out.println(fiesta!=null);
+				
+				//System.out.println(l200!=null);
 		
-		Carro l200 = ctx.getBean("l200",Carro.class);
 		
-		System.out.println(fiesta!=null);
-		
-		System.out.println(l200!=null);
 	}
 	private static void springComXml() {
 		System.out.println("Iniciando o Spring com Xml");
@@ -34,7 +45,17 @@ public class PasseioApp {
 		//Carro carro = ctx.getBean(Carro.class); //erro
 		
 		Carro fiesta = ctx.getBean("fiesta",Carro.class);
+		System.out.println(fiesta);
+		fiesta.setCombustivel(120);
+		fiesta.setCor("AZUL");
+		//fiesta.setMarca("FORD");
+		//fiesta.setModelo("FISTA");
 		
+		System.out.println(fiesta);
+		
+		fiesta = ctx.getBean("fiesta",Carro.class);
+		
+		System.out.println(fiesta);
 		Carro l200 = ctx.getBean("l200",Carro.class);
 		
 		System.out.println(fiesta!=null);
