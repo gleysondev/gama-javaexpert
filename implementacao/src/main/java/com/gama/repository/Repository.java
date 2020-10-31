@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class Repository <E> {
+public abstract class Repository <E> implements InterfaceRepository<E> {
 	protected static EntityManager entityManager ;
 	private Class<E> persistentClass;
 	public Repository() {
