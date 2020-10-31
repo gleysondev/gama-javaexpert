@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.gama.model.Campos;
 import com.gama.model.Carro;
+import com.gama.model.CarroTipo;
 import com.gama.model.Marca;
 import com.gama.repository.CarroJpaRepository;
 import com.gama.repository.MarcaJpaRepository;
@@ -80,7 +81,9 @@ public class PasseioApp {
 			
 			System.out.println("Inclusao do Carro");
 		}else {
+			System.out.println("O tipo do meu carro é " + carro.getTipo());
 			carro.setCor("Azul Marinho");
+			carro.setTipo(CarroTipo.QUADRICICLO);
 			repository.alterar(carro);
 			System.out.println("Alteracao do Carro");
 		}

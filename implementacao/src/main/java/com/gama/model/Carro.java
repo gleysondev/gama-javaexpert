@@ -2,6 +2,8 @@ package com.gama.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,11 +21,22 @@ public class Carro {
 	//@JoinColumn(name = "id_marca")
 	private Marca marca;
 	
+	@Enumerated(EnumType.STRING)
+	//@Column(length = 15)
+	private CarroTipo tipo; //4X4 ou QUADRICICLO
+	
 	private String modelo;
 	
 	private String placa;
 	
 	private String cor;
+	
+	public void setTipo(CarroTipo tipo) {
+		this.tipo = tipo;
+	}
+	public CarroTipo getTipo() {
+		return tipo;
+	}
 	
 	@Column(name="capacidade_tanque")
 	private Integer capacidadeTanque;
