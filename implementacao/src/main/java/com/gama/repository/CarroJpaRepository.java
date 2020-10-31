@@ -9,19 +9,12 @@ import javax.persistence.Query;
 import com.gama.model.Carro;
 
 public class CarroJpaRepository  extends Repository <Carro> {
-	
 	public List<Carro> listarPorMarca(String marca){
 		return listar("marca", marca);
 	}
 	
 	public List<Carro> listarPorModelo(String modelo){
 		return listar("modelo", modelo);
-	}
-	
-	public List<Carro> listar(String campo, Object valor){
-		Query query = entityManager.createQuery("SELECT e FROM Carro e WHERE e." + campo + " = :param1 ");
-		query.setParameter("param1",valor );
-		return query.getResultList();
 	}
 	
 	public Carro buscar(String placa){

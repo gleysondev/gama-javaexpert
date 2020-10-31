@@ -17,10 +17,30 @@ public class PasseioApp {
 		//jpa();
 		//consultaJpa()
 		//consultaJpaComParametros();
-		salvarCarroComMarca();
-		System.exit(0);
+		
+		try {
+			listarAsMarcas();
+			salvarCarroComMarca();
+		}catch (Exception e) {
+			System.err.println("Algum erro aconteceu");
+			e.printStackTrace();
+		}finally {
+			System.out.println("O finally executou");
+			System.exit(0);
+		}
+		
 	}
-	
+	public static void listarAsMarcas() {
+		System.out.println("CONSULTANDO MARCAS");
+		MarcaJpaRepository repository = new MarcaJpaRepository();
+		
+		
+		List<Marca> marcas = repository.listar("nome", "LIKE", "FORD");
+		
+		for(Marca marca:marcas) {
+			System.out.println(marca.getNome());
+		}
+	}
 	public static void consultaJpaComParametros() {
 		System.out.println("CONSULTA COM JPA");
 		CarroJpaRepository repository = new CarroJpaRepository();
@@ -62,6 +82,7 @@ public class PasseioApp {
 		if(marca==null) {
 			marca= new Marca();
 			marca.setNome("FORD");
+			marcaRepository.incluir(marca);
 		}
 		
 		//marcaRepository.incluir(marca);
@@ -69,7 +90,7 @@ public class PasseioApp {
 		System.out.println("PERSISTENCIA COM JPA");
 		CarroJpaRepository repository = new CarroJpaRepository();
 		
-		String placa = "ABC-45678";
+		String placa = "ABC-5678";
 		
 		Carro carro =  repository.buscar(placa);
 		if(carro==null) {

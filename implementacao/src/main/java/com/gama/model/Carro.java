@@ -25,6 +25,10 @@ public class Carro {
 	//@Column(length = 15)
 	private CarroTipo tipo; //4X4 ou QUADRICICLO
 	
+	public Carro() {
+		this.tipo = CarroTipo.C4X4;
+	}
+	
 	private String modelo;
 	
 	private String placa;
