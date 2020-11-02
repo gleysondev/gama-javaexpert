@@ -1,11 +1,13 @@
-package com.gama.model;
+package com.gama.model.reserva;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,18 @@ public class Reserva {
 	private Double valorLocacao;
 	private String numeroReserva;
 	private Integer numeroDias;
+	
+	@OneToMany(mappedBy = "reserva")
+	private List<ReservaVeiculo> veiculos;
+	
+	public List<ReservaVeiculo> getVeiculos() {
+		return veiculos;
+	}
+	
+	public void setVeiculos(List<ReservaVeiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

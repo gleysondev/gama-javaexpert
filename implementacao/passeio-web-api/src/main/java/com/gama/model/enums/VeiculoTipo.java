@@ -1,6 +1,6 @@
-package com.gama.model;
+package com.gama.model.enums;
 
-public enum CarroTipo {
+public enum VeiculoTipo {
 	QUADRICICLO (4),
 	C4X4 (7),
 	MOTOCICLETA (2),
@@ -8,7 +8,7 @@ public enum CarroTipo {
 	
 	private int lotacao;
 	
-	private CarroTipo(int lotacao) {
+	private VeiculoTipo(int lotacao) {
 		this.lotacao=lotacao;
 	}
 	public int getLotacao() {

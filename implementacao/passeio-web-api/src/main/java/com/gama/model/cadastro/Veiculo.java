@@ -1,4 +1,4 @@
-package com.gama.model;
+package com.gama.model.cadastro;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.gama.model.enums.TipoCombustivel;
+import com.gama.model.enums.VeiculoTipo;
+
 @Entity
-@Table(name = "tab_carro")
-public class Carro {
+@Table(name = "tab_veiculo")
+public class Veiculo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -22,8 +25,19 @@ public class Carro {
 	private Marca marca;
 	
 	@Enumerated(EnumType.STRING)
-	//@Column(length = 15)
-	private CarroTipo tipo; //4X4 ou QUADRICICLO
+	@Column(length = 15)
+	private VeiculoTipo tipo;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(length = 15)
+	private TipoCombustivel tipoCombustivel;
+	
+	public TipoCombustivel getTipoCombustivel() {
+		return tipoCombustivel;
+	}
+	public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
+		this.tipoCombustivel = tipoCombustivel;
+	}
 	
 	private boolean disponivel;
 	
@@ -42,8 +56,8 @@ public class Carro {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	public Carro() {
-		this.tipo = CarroTipo.C4X4;
+	public Veiculo() {
+		this.tipo = VeiculoTipo.C4X4;
 	}
 	
 	private String modelo;
@@ -52,10 +66,10 @@ public class Carro {
 	
 	private String cor;
 	
-	public void setTipo(CarroTipo tipo) {
+	public void setTipo(VeiculoTipo tipo) {
 		this.tipo = tipo;
 	}
-	public CarroTipo getTipo() {
+	public VeiculoTipo getTipo() {
 		return tipo;
 	}
 	
@@ -127,7 +141,7 @@ public class Carro {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carro other = (Carro) obj;
+		Veiculo other = (Veiculo) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

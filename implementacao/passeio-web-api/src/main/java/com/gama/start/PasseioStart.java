@@ -1,15 +1,20 @@
 package com.gama.start;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.gama.model.Carro;
-import com.gama.model.Marca;
-import com.gama.repository.CarroRepository;
+import com.gama.model.cadastro.Cliente;
+import com.gama.model.cadastro.Marca;
+import com.gama.model.cadastro.Telefone;
+import com.gama.model.cadastro.Veiculo;
+import com.gama.repository.ClienteRepository;
 import com.gama.repository.MarcaRepository;
+import com.gama.repository.VeiculoRepository;
 
 
 @Component
@@ -20,10 +25,42 @@ public class PasseioStart {
 	private MarcaRepository marcaRepository;
 	
 	@Autowired
-	private CarroRepository carroRepository;
+	private VeiculoRepository carroRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
 	
 	@Value("${meunome}")
 	private String nome;
+	
+	
+	public void salvarCliente() {
+		Cliente gleyson = new Cliente();
+		gleyson.setNome("GLEYSON SAMPAIO");
+		gleyson.setCpf("123123");
+		gleyson.setDataNascimento(new Date());
+		gleyson.setEmail("gleysodev@gmail.com");
+		gleyson.setNumeroCnh("123123");
+		
+		Telefone celular = new Telefone();
+		celular.setDdd(11);
+		celular.setNumero(958940362L);
+		
+		Telefone whatsapp = new Telefone();
+		whatsapp.setDdd(11);
+		whatsapp.setNumero(958940362L);
+		
+		gleyson.setCelular(celular);
+		gleyson.setWhatsapp(whatsapp);
+		
+		//clienteRepository.save(gleyson);
+		
+		Optional<Cliente> cliente = clienteRepository.findById(1);
+		
+		System.out.println(cliente.get());
+		
+	}
 	
 	public PasseioStart() {
 		//System.out.println("Nova classe passeio");
@@ -58,7 +95,7 @@ public class PasseioStart {
 		//cadastrar 1 carro com a PLAXA ABC-1234
 		
 		
-		Carro carro = new Carro();
+		Veiculo carro = new Veiculo();
 		carro.setCapacidadeTanque(100);
 		carro.setCor("PRETA");
 		

@@ -1,8 +1,11 @@
-package com.gama.model;
+package com.gama.model.cadastro;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +24,20 @@ public class Cliente {
 	private String numeroCnh;
 	private String cpf;
 	private String email;
-	private String celular;
+	
+	@Embedded
+	private Telefone celular;
+	
+	@Embedded
+	 @AttributeOverrides({
+	    @AttributeOverride(name="ddd",column=@Column(name="whats_ddd")),
+	    @AttributeOverride(name="numero",column=@Column(name="whats_numero"))
+	  })
+	private Telefone whatsapp;
+	
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -54,16 +68,23 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCelular() {
-		return celular;
-	}
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	public Telefone getCelular() {
+		return celular;
+	}
+	public void setCelular(Telefone celular) {
+		this.celular = celular;
+	}
+	public Telefone getWhatsapp() {
+		return whatsapp;
+	}
+	public void setWhatsapp(Telefone whatsapp) {
+		this.whatsapp = whatsapp;
+	}
+	
 }

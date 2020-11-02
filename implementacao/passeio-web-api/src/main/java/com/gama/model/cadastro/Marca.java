@@ -1,4 +1,4 @@
-package com.gama.model;
+package com.gama.model.cadastro;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.gama.model.Marca;
+import com.gama.model.cadastro.Marca;
 
 public interface MarcaRepository extends CrudRepository<Marca, Integer> {
 	@Query("SELECT e FROM Marca e WHERE e.nome = :p1")
